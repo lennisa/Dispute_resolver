@@ -1,0 +1,299 @@
+{
+  "trained_at": "2026-07-26 12:24:52",
+  "dataset_path": "disputes_dataset.json",
+  "n_cases": 300,
+  "n_features": 85,
+  "classes": [
+    "card_member_wins",
+    "escalate",
+    "merchant_wins",
+    "partial"
+  ],
+  "ensemble_weights": {
+    "xgboost": 0.15,
+    "lightgbm": 0.7,
+    "catboost": 0.15
+  },
+  "ensemble_test_metrics": {
+    "accuracy": 0.9333,
+    "precision_macro": 0.9389,
+    "recall_macro": 0.9206,
+    "f1_macro": 0.9245,
+    "roc_auc_macro": 0.9845,
+    "per_class": {
+      "card_member_wins": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 14,
+        "roc_auc": 1.0
+      },
+      "escalate": {
+        "precision": 0.8182,
+        "recall": 1.0,
+        "f1": 0.9,
+        "support": 9,
+        "roc_auc": 0.983
+      },
+      "merchant_wins": {
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889,
+        "support": 5,
+        "roc_auc": 1.0
+      },
+      "partial": {
+        "precision": 0.9375,
+        "recall": 0.8824,
+        "f1": 0.9091,
+        "support": 17,
+        "roc_auc": 0.9548
+      }
+    },
+    "confusion_matrix": [
+      [
+        14,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        9,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        4,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        15
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "card_member_wins",
+      "escalate",
+      "merchant_wins",
+      "partial"
+    ]
+  },
+  "per_model_test_metrics": {
+    "xgboost": {
+      "accuracy": 0.9111,
+      "precision_macro": 0.9251,
+      "recall_macro": 0.9027,
+      "f1_macro": 0.9086,
+      "roc_auc_macro": 0.97,
+      "per_class": {
+        "card_member_wins": {
+          "precision": 1.0,
+          "recall": 0.9286,
+          "f1": 0.963,
+          "support": 14,
+          "roc_auc": 1.0
+        },
+        "escalate": {
+          "precision": 0.8182,
+          "recall": 1.0,
+          "f1": 0.9,
+          "support": 9,
+          "roc_auc": 0.9691
+        },
+        "merchant_wins": {
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "support": 5,
+          "roc_auc": 0.995
+        },
+        "partial": {
+          "precision": 0.8824,
+          "recall": 0.8824,
+          "f1": 0.8824,
+          "support": 17,
+          "roc_auc": 0.916
+        }
+      },
+      "confusion_matrix": [
+        [
+          13,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          15
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "card_member_wins",
+        "escalate",
+        "merchant_wins",
+        "partial"
+      ]
+    },
+    "lightgbm": {
+      "accuracy": 0.9111,
+      "precision_macro": 0.9212,
+      "recall_macro": 0.9059,
+      "f1_macro": 0.9074,
+      "roc_auc_macro": 0.9864,
+      "per_class": {
+        "card_member_wins": {
+          "precision": 0.9333,
+          "recall": 1.0,
+          "f1": 0.9655,
+          "support": 14,
+          "roc_auc": 1.0
+        },
+        "escalate": {
+          "precision": 0.8182,
+          "recall": 1.0,
+          "f1": 0.9,
+          "support": 9,
+          "roc_auc": 0.9846
+        },
+        "merchant_wins": {
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "support": 5,
+          "roc_auc": 1.0
+        },
+        "partial": {
+          "precision": 0.9333,
+          "recall": 0.8235,
+          "f1": 0.875,
+          "support": 17,
+          "roc_auc": 0.9611
+        }
+      },
+      "confusion_matrix": [
+        [
+          14,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          1
+        ],
+        [
+          1,
+          2,
+          0,
+          14
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "card_member_wins",
+        "escalate",
+        "merchant_wins",
+        "partial"
+      ]
+    },
+    "catboost": {
+      "accuracy": 0.8889,
+      "precision_macro": 0.9054,
+      "recall_macro": 0.8912,
+      "f1_macro": 0.8902,
+      "roc_auc_macro": 0.9446,
+      "per_class": {
+        "card_member_wins": {
+          "precision": 0.875,
+          "recall": 1.0,
+          "f1": 0.9333,
+          "support": 14,
+          "roc_auc": 0.9977
+        },
+        "escalate": {
+          "precision": 0.8182,
+          "recall": 1.0,
+          "f1": 0.9,
+          "support": 9,
+          "roc_auc": 0.9722
+        },
+        "merchant_wins": {
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "support": 5,
+          "roc_auc": 0.9
+        },
+        "partial": {
+          "precision": 0.9286,
+          "recall": 0.7647,
+          "f1": 0.8387,
+          "support": 17,
+          "roc_auc": 0.9086
+        }
+      },
+      "confusion_matrix": [
+        [
+          14,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          1
+        ],
+        [
+          2,
+          2,
+          0,
+          13
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "card_member_wins",
+        "escalate",
+        "merchant_wins",
+        "partial"
+      ]
+    }
+  },
+  "baseline_comparison": {
+    "logistic_regression_val_accuracy": 0.8888888888888888,
+    "random_forest_val_accuracy": 0.9111111111111111
+  }
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "feature": "reason_category",
+    "importance": 0.14854
+  },
+  {
+    "feature": "merchant_delivery_count",
+    "importance": 0.06847
+  },
+  {
+    "feature": "evidence_reliability_gap",
+    "importance": 0.06729
+  },
+  {
+    "feature": "customer_evidence_reliability",
+    "importance": 0.04897
+  },
+  {
+    "feature": "merchant_evidence_count",
+    "importance": 0.04872
+  },
+  {
+    "feature": "merchant_evidence_reliability",
+    "importance": 0.04154
+  },
+  {
+    "feature": "nli_margin",
+    "importance": 0.03954
+  },
+  {
+    "feature": "either_side_missing_evidence",
+    "importance": 0.03779
+  },
+  {
+    "feature": "contradiction_score",
+    "importance": 0.03565
+  },
+  {
+    "feature": "entailment_score",
+    "importance": 0.02959
+  },
+  {
+    "feature": "merchant_duplicate_count",
+    "importance": 0.02942
+  },
+  {
+    "feature": "merchant_character_count",
+    "importance": 0.02676
+  },
+  {
+    "feature": "customer_negations",
+    "importance": 0.02576
+  },
+  {
+    "feature": "merchant_uppercase_ratio",
+    "importance": 0.02465
+  },
+  {
+    "feature": "customer_average_word_length",
+    "importance": 0.02274
+  },
+  {
+    "feature": "customer_evidence_density",
+    "importance": 0.02143
+  },
+  {
+    "feature": "neutral_score",
+    "importance": 0.01987
+  },
+  {
+    "feature": "nli_predicted_label",
+    "importance": 0.01873
+  },
+  {
+    "feature": "nli_confidence",
+    "importance": 0.01617
+  },
+  {
+    "feature": "merchant_has_evidence",
+    "importance": 0.01575
+  },
+  {
+    "feature": "customer_numeric_token_count",
+    "importance": 0.01518
+  },
+  {
+    "feature": "merchant_average_word_length",
+    "importance": 0.01443
+  },
+  {
+    "feature": "merchant_total_evidence",
+    "importance": 0.01424
+  },
+  {
+    "feature": "customer_character_count",
+    "importance": 0.01405
+  },
+  {
+    "feature": "customer_charge_count",
+    "importance": 0.01144
+  }
+]
