@@ -1,37 +1,5 @@
-"""
-main.py — FastAPI backend for the dispute resolution system.
 
-Wires together everything built so far into one live service:
 
-    Request (case) -> parser.py + nli_checker.py (inside features.py) ->
-    features.py -> model.py's trained ensemble -> explainability.py (SHAP) ->
-    decision engine -> similar case retrieval + policy matching ->
-    JSON response shaped for the React frontend (submission, pipeline,
-    explainability, decision, fairness screens).
-
-Run:
-    uvicorn main:app --reload --port 8000
-
-Requires model_artifacts/ to already exist — run `python3 model.py
-dispute_dataset_300.json` first.
-
-Design notes:
-  - Heavy objects (NLI model, the 3-model ensemble, SHAP explainers,
-    the similar-case index) are loaded ONCE at startup via FastAPI's
-    lifespan, not per-request. Reloading any of these per-request would
-    make every call take seconds instead of milliseconds.
-  - Similar-case retrieval uses TF-IDF + cosine similarity over the
-    training dataset as a lightweight, dependency-light stand-in for
-    the sentence-embedding version described in the build plan — swap
-    in sentence-transformers later without changing the response shape
-    if embedding-quality similarity turns out to matter.
-  - The decision engine's confidence thresholds and the
-    card-member/merchant percentage split are pure functions, unit-
-    testable in isolation from the web layer — see decision_engine()
-    and to_two_sided_split() below.
-  - /fairness reads directly from model_artifacts/metadata.json (real
-    test-set metrics saved by model.py), not a fabricated number.
-"""
 
 import json
 from contextlib import asynccontextmanager
@@ -57,9 +25,7 @@ from nli_checker import ContradictionChecker
 
 DATASET_PATH = Path("disputes_dataset_300.json")
 
-# ---------------------------------------------------------------------------
-# Decision engine — pure functions, no I/O, easy to test/tune in isolation.
-# ---------------------------------------------------------------------------
+
 
 AUTO_RESOLVE_THRESHOLD = 0.75
 RECOMMEND_THRESHOLD = 0.55
@@ -73,16 +39,7 @@ OUTCOME_DISPLAY_NAMES = {
 
 
 def decision_engine(predicted_label: str, confidence: float) -> Dict:
-    """
-    Maps a 4-class prediction (card_member_wins / merchant_wins /
-    partial / escalate) + its confidence into the auto-resolve /
-    recommend / human-review action the UI's stamp badge shows.
-
-    The model can predict "escalate" directly (it's a real training
-    label), OR any other class can still get escalated here if
-    confidence is too low — a low-confidence "merchant_wins" shouldn't
-    be auto-resolved just because the model happened to lean that way.
-    """
+    
     if predicted_label == "escalate" or confidence < RECOMMEND_THRESHOLD:
         action = "HUMAN REVIEW"
     elif confidence >= AUTO_RESOLVE_THRESHOLD:
@@ -95,13 +52,7 @@ def decision_engine(predicted_label: str, confidence: float) -> Dict:
 
 
 def to_two_sided_split(class_probabilities: Dict[str, float]) -> Dict[str, float]:
-    """
-    The UI's scale bar wants a single card-member-vs-merchant split.
-    Renormalizes just the card_member_wins / merchant_wins probability
-    mass (excluding partial/escalate) so the bar always reads as a
-    clean two-sided comparison. Falls back to 50/50 if both are ~0
-    (e.g. the case is dominated by escalate/partial probability).
-    """
+    
     cust = class_probabilities.get("card_member_wins", 0.0)
     merch = class_probabilities.get("merchant_wins", 0.0)
     total = cust + merch
@@ -110,16 +61,10 @@ def to_two_sided_split(class_probabilities: Dict[str, float]) -> Dict[str, float
     return {"custPct": round(cust / total, 4), "merchPct": round(merch / total, 4)}
 
 
-# ---------------------------------------------------------------------------
-# SHAP -> frontend feature-bar shape
-# ---------------------------------------------------------------------------
+
 
 def to_frontend_features(explanation: Dict) -> List[Dict]:
-    """
-    Converts explain_case()'s top_positive_reasons/top_negative_reasons
-    into the {label, side, weight} shape the React FeatureBar component
-    already expects (see dispute-console.jsx).
-    """
+    
     out = []
     for r in explanation["top_positive_reasons"]:
         out.append({"label": r["explanation"], "side": "customer", "weight": abs(r["shap_value"])})
@@ -129,10 +74,7 @@ def to_frontend_features(explanation: Dict) -> List[Dict]:
     return out
 
 
-# ---------------------------------------------------------------------------
-# Similar case retrieval — TF-IDF + cosine similarity (lightweight
-# stand-in for sentence-embedding similarity; same output shape either way)
-# ---------------------------------------------------------------------------
+
 
 class SimilarCaseIndex:
     def __init__(self, cases: List[Dict]):
@@ -161,10 +103,6 @@ class SimilarCaseIndex:
         ]
 
 
-# ---------------------------------------------------------------------------
-# Policy matching — hardcoded snippets, simple keyword scoring against
-# the dispute's category and evidence flags (Tier 1, per the build plan)
-# ---------------------------------------------------------------------------
 
 POLICY_SNIPPETS = [
     {
@@ -217,9 +155,7 @@ def match_policy(case: Dict) -> str:
     return best["text"]
 
 
-# ---------------------------------------------------------------------------
-# App state (loaded once at startup)
-# ---------------------------------------------------------------------------
+
 
 class AppState:
     explainer: Optional[DisputeExplainer] = None
@@ -260,20 +196,20 @@ async def lifespan(app: FastAPI):
     print("Shutting down.")
 
 
+
+
 app = FastAPI(title="Dispute Resolution API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Vite / CRA dev servers
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
-# ---------------------------------------------------------------------------
-# Request / response models
-# ---------------------------------------------------------------------------
+
 
 class DisputeCaseRequest(BaseModel):
     case_id: Optional[str] = Field(default=None, description="If omitted, one is generated.")
@@ -300,9 +236,7 @@ class ResolveResponse(BaseModel):
     audit: Dict
 
 
-# ---------------------------------------------------------------------------
-# Endpoints
-# ---------------------------------------------------------------------------
+
 
 @app.get("/health")
 def health():

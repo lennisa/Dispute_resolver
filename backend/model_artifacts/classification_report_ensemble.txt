@@ -1,10 +1,10 @@
                   precision    recall  f1-score   support
 
-card_member_wins       1.00      1.00      1.00        14
+card_member_wins       1.00      0.93      0.96        14
         escalate       0.82      1.00      0.90         9
    merchant_wins       1.00      0.80      0.89         5
-         partial       0.94      0.88      0.91        17
+         partial       0.88      0.88      0.88        17
 
-        accuracy                           0.93        45
-       macro avg       0.94      0.92      0.92        45
-    weighted avg       0.94      0.93      0.93        45
+        accuracy                           0.91        45
+       macro avg       0.93      0.90      0.91        45
+    weighted avg       0.92      0.91      0.91        45

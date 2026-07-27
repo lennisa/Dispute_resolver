@@ -1,79 +1,79 @@
 [
   {
     "feature": "reason_category",
-    "importance": 0.14854
-  },
-  {
-    "feature": "merchant_delivery_count",
-    "importance": 0.06847
+    "importance": 0.14384
   },
   {
     "feature": "evidence_reliability_gap",
-    "importance": 0.06729
-  },
-  {
-    "feature": "customer_evidence_reliability",
-    "importance": 0.04897
-  },
-  {
-    "feature": "merchant_evidence_count",
-    "importance": 0.04872
-  },
-  {
-    "feature": "merchant_evidence_reliability",
-    "importance": 0.04154
-  },
-  {
-    "feature": "nli_margin",
-    "importance": 0.03954
-  },
-  {
-    "feature": "either_side_missing_evidence",
-    "importance": 0.03779
-  },
-  {
-    "feature": "contradiction_score",
-    "importance": 0.03565
-  },
-  {
-    "feature": "entailment_score",
-    "importance": 0.02959
+    "importance": 0.06856
   },
   {
     "feature": "merchant_duplicate_count",
-    "importance": 0.02942
+    "importance": 0.06224
   },
   {
-    "feature": "merchant_character_count",
-    "importance": 0.02676
+    "feature": "merchant_delivery_count",
+    "importance": 0.05952
+  },
+  {
+    "feature": "merchant_evidence_count",
+    "importance": 0.0489
+  },
+  {
+    "feature": "customer_evidence_reliability",
+    "importance": 0.04882
+  },
+  {
+    "feature": "merchant_evidence_reliability",
+    "importance": 0.04083
+  },
+  {
+    "feature": "nli_margin",
+    "importance": 0.03931
+  },
+  {
+    "feature": "either_side_missing_evidence",
+    "importance": 0.03853
+  },
+  {
+    "feature": "contradiction_score",
+    "importance": 0.03655
+  },
+  {
+    "feature": "entailment_score",
+    "importance": 0.02871
   },
   {
     "feature": "customer_negations",
-    "importance": 0.02576
+    "importance": 0.02827
+  },
+  {
+    "feature": "merchant_character_count",
+    "importance": 0.0262
   },
   {
     "feature": "merchant_uppercase_ratio",
-    "importance": 0.02465
+    "importance": 0.02324
   },
   {
     "feature": "customer_average_word_length",
-    "importance": 0.02274
+    "importance": 0.0223
+  },
+  {
+    "feature": "merchant_total_evidence",
+    "importance": 0.02158
   },
   {
     "feature": "customer_evidence_density",
-    "importance": 0.02143
+    "importance": 0.02129
   },
   {
     "feature": "neutral_score",
-    "importance": 0.01987
-  },
-  {
-    "feature": "nli_predicted_label",
-    "importance": 0.01873
+    "importance": 0.02033
   },
   {
     "feature": "nli_confidence",
-    "importance": 0.01617
+    "importance": 0.01627
   },
   {
     "feature": "merchant_has_evidence",
@@ -81,22 +81,22 @@
   },
   {
     "feature": "customer_numeric_token_count",
-    "importance": 0.01518
-  },
-  {
-    "feature": "merchant_average_word_length",
-    "importance": 0.01443
-  },
-  {
-    "feature": "merchant_total_evidence",
-    "importance": 0.01424
+    "importance": 0.0141
   },
   {
     "feature": "customer_character_count",
-    "importance": 0.01405
+    "importance": 0.01345
   },
   {
-    "feature": "customer_charge_count",
-    "importance": 0.01144
+    "feature": "merchant_average_word_length",
+    "importance": 0.01305
+  },
+  {
+    "feature": "merchant_sentence_count",
+    "importance": 0.01212
+  },
+  {
+    "feature": "merchant_word_count",
+    "importance": 0.0086
   }
 ]
