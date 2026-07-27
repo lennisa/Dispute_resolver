@@ -21,14 +21,14 @@ export const colors = {
     line: "#d8cba7",
   },
   amber: {
-    DEFAULT: "#b8863b",
-    bright: "#d6a355",
-    dim: "#8a6529",
+    DEFAULT: "#fcf1a9",
+    bright: "#f4f161",
+    dim: "#f9d93c",
   },
   stamp: {
-    green: "#3f6b4a",
-    red: "#8b3a3a",
-    navy: "#26405f",
+    green: "#e1eee4",
+    red: "#f8d2d2",
+    navy: "#1156d7",
   },
 };
 

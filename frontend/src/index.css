@@ -10,8 +10,17 @@ body,
 
 body {
   @apply bg-ink-950 text-paper font-body antialiased;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-  background-size: 3px 3px;
+  position: relative;
+  background-image: url("/assets/background5.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 ::selection {

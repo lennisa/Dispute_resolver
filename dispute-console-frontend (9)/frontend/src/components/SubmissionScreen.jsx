@@ -112,7 +112,7 @@ export default function SubmissionScreen({ onSubmit, submitting, error }) {
         <p className="text-ink-faint text-sm mt-1.5">Fill in the details.</p>
       </div>
 
-      <Card photo="/assets/pic.png">
+      <Card photo="/assets/pic2.avif">
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid grid-cols-2 gap-4">
             <div>

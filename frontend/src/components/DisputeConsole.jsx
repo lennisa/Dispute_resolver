@@ -68,21 +68,18 @@ export default function DisputeConsole() {
 
   return (
     <div className="min-h-screen px-6 py-10">
-      <div className="max-w-5xl mx-auto mb-8 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-amber-bright" />
-          <span className="font-mono text-xs tracking-[0.2em] uppercase text-ink-faint">
-            Frictionless Dispute &amp; Chargeback Resolution
-          </span>
+      <div className="max-w-5xl mx-auto mb-8 flex items-center justify-end">
+        <div className="flex items-center gap-4">
+          {screen !== SCREENS.SUBMISSION && (
+            <button
+              onClick={handleNewCase}
+              className="font-mono text-xs text-ink-faint hover:text-paper underline underline-offset-2"
+            >
+              new case
+            </button>
+          )}
+          <img src="/assets/logo2.webp" alt="Logo" className="h-16 w-auto" />
         </div>
-        {screen !== SCREENS.SUBMISSION && (
-          <button
-            onClick={handleNewCase}
-            className="font-mono text-xs text-ink-faint hover:text-paper underline underline-offset-2"
-          >
-            new case
-          </button>
-        )}
       </div>
 
       {screen === SCREENS.SUBMISSION && (

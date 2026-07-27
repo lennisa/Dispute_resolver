@@ -41,17 +41,17 @@ function SimilarCaseRow({ item }) {
   return (
     <li className="flex items-start justify-between gap-4 py-2.5 first:pt-0 last:pb-0">
       <div className="min-w-0">
-        <p className="font-mono text-sm text-ink-950">{id}</p>
-        {excerpt && <p className="text-xs text-ink-600 mt-0.5 truncate">{excerpt}</p>}
+        <p className="font-mono text-sm text-paper">{id}</p>
+        {excerpt && <p className="text-xs text-paper/55 mt-0.5 truncate">{excerpt}</p>}
       </div>
       <div className="shrink-0 text-right">
         {outcome && (
-          <p className="font-mono text-[11px] uppercase tracking-wide text-ink-700">
+          <p className="font-mono text-[11px] uppercase tracking-wide text-paper/70">
             {String(outcome).replace(/_/g, " ")}
           </p>
         )}
         {similarity !== undefined && (
-          <p className="font-mono text-xs tabular text-amber-dim">
+          <p className="font-mono text-xs tabular text-amber-bright">
             {typeof similarity === "number" ? `${(similarity * 100).toFixed(0)}% match` : similarity}
           </p>
         )}
@@ -78,14 +78,14 @@ export default function DecisionScreen({ result, caseId, onNewCase }) {
         <Card bodyClassName="flex items-center gap-6">
           <DecisionBadge action={action} outcome={outcome} />
           <div>
-            <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-600/70 mb-1">
+            <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-paper/55 mb-1">
               Decision Engine Output
             </p>
-            <p className="font-display text-lg font-semibold text-ink-950 capitalize">
+            <p className="font-display text-lg font-semibold text-paper capitalize">
               {(action || "pending").replace(/_/g, " ")}
             </p>
             {outcome && (
-              <p className="text-sm text-ink-700 mt-0.5 capitalize">
+              <p className="text-sm text-paper/75 mt-0.5 capitalize">
                 Favors: {outcome.replace(/_/g, " ")}
               </p>
             )}
@@ -94,12 +94,12 @@ export default function DecisionScreen({ result, caseId, onNewCase }) {
 
         {similar.length > 0 && (
           <Card eyebrow="Precedent" title="Similar Cases">
-            <ul className="divide-y divide-paper-line">
+            <ul className="divide-y divide-paper/10">
               {similar.map((item, i) => (
                 <SimilarCaseRow key={pick(item, ["case_id", "id"], i)} item={item} />
               ))}
             </ul>
-            <p className="mt-3 pt-3 border-t border-paper-line font-mono text-[11px] text-ink-600">
+            <p className="mt-3 pt-3 border-t border-paper/15 font-mono text-[11px] text-paper/50">
               Retrieved via TF-IDF + cosine similarity — matches on shared vocabulary, not
               paraphrased meaning.
             </p>
@@ -111,10 +111,10 @@ export default function DecisionScreen({ result, caseId, onNewCase }) {
             <ul className="space-y-3">
               {policyItems.map((p, i) => (
                 <li key={i} className="text-sm">
-                  <p className="font-mono text-xs text-amber-dim mb-0.5">
+                  <p className="font-mono text-xs text-amber-bright mb-0.5">
                     {pick(p, ["reference", "id", "code"], `Policy ${i + 1}`)}
                   </p>
-                  <p className="text-ink-800 leading-snug">
+                  <p className="text-paper/85 leading-snug">
                     {pick(p, ["text", "summary", "description"], String(p))}
                   </p>
                 </li>
@@ -133,7 +133,7 @@ export default function DecisionScreen({ result, caseId, onNewCase }) {
           </button>
           <button
             onClick={onNewCase}
-            className="px-5 py-2.5 rounded-sm bg-ink-950 text-paper font-medium text-sm tracking-wide hover:bg-ink-800 transition-colors border border-paper/10"
+            className="px-5 py-2.5 rounded-sm bg-blue-500 text-white font-medium text-sm tracking-wide hover:bg-blue-400 transition-colors"
           >
             Open New Case
           </button>
