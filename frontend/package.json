@@ -1,22 +1,3 @@
-{
-  "name": "dispute-console",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7072ae0ba3bf93edc031f6b3287bb6cc4e3e22b4db74027cf3be200a7de6dc57
+size 439
