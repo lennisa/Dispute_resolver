@@ -172,14 +172,43 @@ Every prediction is accompanied by SHAP explanations showing:
 * Probability Calibration
 
 ## Project Structure
+
+```text
 project/
+├── backend/
+│   ├── model_artifacts/
+│   ├── app.py
+│   ├── main.py
+│   ├── parser.py
+│   ├── nli_checker.py
+│   ├── features.py
+│   ├── explainability.py
+│   ├── model.py
+│   ├── train_model.py
+│   ├── dispute_xgboost_model.json
+│   ├── disputes_dataset_300.json
+│   ├── label_encoder.json
+│   └── requirements.txt
 │
-├── backend/          FastAPI backend and ML pipeline
-├── frontend/         React application
-├── data/             Dataset and preprocessing
-├── models/           Trained model artifacts
-├── screenshots/      README images
-└── README.md
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── disputeApi.js
+│   │   ├── components/
+│   │   │   ├── SubmissionScreen.jsx
+│   │   │   ├── PipelineScreen.jsx
+│   │   │   ├── ExplainabilityScreen.jsx
+│   │   │   ├── DecisionScreen.jsx
+│   │   │   └── ...
+│   │   ├── hooks/
+│   │   ├── theme/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── index.html
+│   └── .env.example
+```
 
 ## API Endpoints
 
